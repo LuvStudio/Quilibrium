@@ -53,7 +53,7 @@ sysctl -p
 echo "sysctl配置已重新加载"
 
 # 更新并升级Ubuntu软件包
-sudo apt update && sudo apt -y upgrade 
+sudo apt update 
 
 # 安装wget、screen和git等组件
 sudo apt install git ufw bison screen binutils gcc make bsdmainutils cpulimit -y
@@ -72,17 +72,9 @@ export GOROOT_BOOTSTRAP=$GOROOT
 
 # 根据系统架构安装相应的Go版本
 if [ "$ARCH" = "x86_64" ]; then
-  gvm install go1.17.13
-  gvm use go1.17.13
-  export GOROOT_BOOTSTRAP=$GOROOT
-
-  gvm install go1.20.2
+  gvm install go1.20.2 -B
   gvm use go1.20.2
 elif [ "$ARCH" = "aarch64" ]; then
-  gvm install go1.17.13 -B
-  gvm use go1.17.13
-  export GOROOT_BOOTSTRAP=$GOROOT
-
   gvm install go1.20.2 -B
   gvm use go1.20.2
 else
@@ -91,7 +83,7 @@ else
 fi
 
 
-git clone https://github.com/a3165458/ceremonyclient.git
+git clone https://github.com/LuvStudio/ceremonyclient.git
 
 # 进入ceremonyclient/node目录
 cd $HOME
@@ -154,7 +146,7 @@ else
 fi
 
 # 克隆仓库
-git clone https://github.com/a3165458/ceremonyclient.git
+git clone https://github.com/LuvStudio/ceremonyclient.git
 
 # 进入 ceremonyclient/node 目录
 cd $HOME
@@ -234,7 +226,7 @@ echo "=======================已解锁CPU性能限制并启动quilibrium 挖矿�
 
 # 更新本脚本
 function update_script() {
-    SCRIPT_URL="https://raw.githubusercontent.com/a3165458/Quilibrium/main/Quili.sh"
+    SCRIPT_URL="https://raw.githubusercontent.com/LuvStudio/Quilibrium/main/Quili.sh"
     curl -o $SCRIPT_PATH $SCRIPT_URL
     chmod +x $SCRIPT_PATH
     echo "脚本已更新。请退出脚本后，执行bash Quili.sh 重新运行此脚本。"
